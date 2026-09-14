@@ -1,0 +1,27 @@
+# AFC Hotel — Netlify deployment config
+# No npm work needed on your laptop: Netlify runs `npm install` + `npm run build` automatically.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback — all routes serve index.html (React single-page app)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache the inlined bundle sensibly
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--no-audit --no-fund"

@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0c1a16;
+  --color-ink2: #11231d;
+  --color-gold: #d4a24e;
+  --color-gold2: #f0c778;
+  --color-cream: #fff9ef;
+  --color-cream2: #f7edda;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  background: #fff9ef;
+  color: #0c1a16;
+  -webkit-font-smoothing: antialiased;
+}
+.font-display { font-family: "Playfair Display", serif; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #f1e8d3; }
+::-webkit-scrollbar-thumb { background: #0c1a16; border-radius: 99px; border: 2px solid #f1e8d3; }
+::-webkit-scrollbar-thumb:hover { background: #d4a24e; }
+
+.texture-grain {
+  background-image: radial-gradient(rgba(212,162,78,0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.texture-dark {
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.gold-gradient-text {
+  background: linear-gradient(100deg, #f6dc9a 0%, #d4a24e 40%, #f0c778 60%, #9a6b1e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gold-border {
+  border: 1px solid rgba(212,162,78,0.35);
+}
+.glass-dark {
+  background: rgba(12,26,22,0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+
+@keyframes floaty {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-floaty { animation: floaty 5s ease-in-out infinite; }
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(212,162,78,0.55); }
+  70% { box-shadow: 0 0 0 14px rgba(212,162,78,0); }
+  100% { box-shadow: 0 0 0 0 rgba(212,162,78,0); }
+}
+.animate-pulse-ring { animation: pulse-ring 2.2s infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.card-lift { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s; }
+.card-lift:hover { transform: translateY(-6px); }
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
